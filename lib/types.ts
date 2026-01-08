@@ -76,3 +76,33 @@ export interface SortConfig {
   key: keyof ServiceRequest | null;
   direction: 'asc' | 'desc';
 }
+// Add 'kpi' to your existing ViewType
+export type ViewType = 'dashboard' | 'details' | 'kpi';
+
+// If your ServiceRequest type doesn't already include csRepName, add it:
+export interface ServiceRequest {
+  requestId: string;
+  accountName: string;
+  vertical: string;
+  siteCount: number;
+  issueCategory: string;
+  requestDate: string;
+  status: string;
+  urgency: string;
+  priority: string;
+  timeToRespond: number;
+  timeToResolution: number;
+  resolutionDate: string;
+  accountHealth: string;
+  csRepName: string; // Add this line if it doesn't exist
+}
+
+// Add this interface for KPI metrics (if it doesn't exist)
+export interface RepKPIMetrics {
+  name: string;
+  totalCases: number;
+  resolvedCases: number;
+  avgResponseTime: number;
+  avgResolutionTime: number;
+  resolutionRate: number;
+}
